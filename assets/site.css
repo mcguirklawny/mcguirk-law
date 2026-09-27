@@ -1,0 +1,232 @@
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+:root{
+  color-scheme:light;
+  --navy:#16233D; --navy-2:#20314F; --navy-deep:#0E1829;
+  --tan:#A8874E; --tan-soft:#EFE8DA;
+  --cream:#F7F4ED; --paper:#FFFFFF;
+  --ink:#1C1E22; --ink-2:#4B5159; --ink-3:#7A818A;
+  --line:#DFD9CC; --line-2:#EEE9DE;
+  --good:#1D6B47;
+  --onNavy:#F4F1E9; --onNavy-2:#BFC7D4;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --navy:#0F1A2E; --navy-2:#182744; --navy-deep:#0A1220;
+    --tan:#C9A96B; --tan-soft:#231D12;
+    --cream:#131A26; --paper:#111826;
+    --ink:#E8E6E0; --ink-2:#AEB4BD; --ink-3:#7D848E;
+    --line:#2A3446; --line-2:#1D2634;
+    --good:#4FBF8B;
+    --onNavy:#F0EDE5; --onNavy-2:#A9B3C2;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --navy:#0F1A2E;--navy-2:#182744;--navy-deep:#0A1220;--tan:#C9A96B;--tan-soft:#231D12;
+  --cream:#131A26;--paper:#111826;--ink:#E8E6E0;--ink-2:#AEB4BD;--ink-3:#7D848E;
+  --line:#2A3446;--line-2:#1D2634;--good:#4FBF8B;--onNavy:#F0EDE5;--onNavy-2:#A9B3C2;
+}
+
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  padding-bottom:64px;
+}
+@media (min-width:860px){body{padding-bottom:0}}
+
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.narrow{max-width:760px;margin:0 auto;padding-inline:20px}
+
+h1,h2,h3,h4{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(27px,4.4vw,42px);line-height:1.17}
+h2{font-size:clamp(22px,2.9vw,30px);line-height:1.24}
+h3{font-size:18.5px;line-height:1.36}
+h4{font-size:16px}
+p{margin:0}
+a{color:inherit}
+
+.eyebrow{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--tan)}
+
+/* ---------- masthead ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--navy);color:var(--onNavy);border-bottom:3px solid var(--tan)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:11px}
+.mark{display:flex;flex-direction:column;line-height:1.1;min-width:0;text-decoration:none;color:inherit}
+.mark .pre{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tan);margin-bottom:3px}
+.mark .nm{font-family:"Libre Baskerville",Georgia,serif;font-size:16.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topright{display:flex;align-items:center;gap:10px}
+.topcall{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;background:var(--tan);color:#15202E;text-decoration:none;font-weight:700;font-size:15px;padding:9px 14px;border-radius:2px}
+.topcall:hover{filter:brightness(1.07)}
+.topcall .lbl{display:none}
+@media (min-width:620px){.topcall .lbl{display:inline}}
+
+/* nav */
+nav.main{background:var(--navy-2);color:var(--onNavy)}
+nav.main .wrap{padding-block:0}
+nav.main ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0}
+nav.main a{display:block;padding:11px 14px;text-decoration:none;font-size:15px;font-weight:500;color:var(--onNavy-2);border-bottom:3px solid transparent}
+nav.main a:hover{color:var(--onNavy)}
+nav.main a[aria-current="page"]{color:var(--onNavy);border-bottom-color:var(--tan)}
+nav.main details{display:none}
+@media (max-width:859px){
+  nav.main ul{display:none}
+  nav.main details{display:block}
+  nav.main summary{list-style:none;cursor:pointer;padding:11px 14px;font-weight:600;font-size:15px;color:var(--onNavy)}
+  nav.main summary::-webkit-details-marker{display:none}
+  nav.main summary::before{content:"\2630";margin-right:9px;color:var(--tan)}
+  nav.main details[open] summary::before{content:"\2715"}
+  nav.main details ul{display:block;padding-bottom:8px}
+  nav.main details a{padding:9px 14px;border-bottom:none}
+}
+
+/* ---------- hero ---------- */
+.hero{background:var(--navy);color:var(--onNavy);padding-block:46px 50px}
+.hero h1{color:var(--onNavy)}
+.hero .lede{color:var(--onNavy-2);font-size:19px;margin-top:15px;max-width:44ch}
+.hero .eyebrow{margin-bottom:12px;display:block}
+.herogrid{display:grid;gap:34px;align-items:start}
+@media (min-width:920px){.herogrid{grid-template-columns:1.05fr .95fr;gap:46px}}
+
+.cta-call{display:flex;align-items:center;gap:13px;text-decoration:none;background:var(--tan);color:#15202E;padding:15px 22px;border-radius:3px;margin-top:24px;width:fit-content;max-width:100%}
+.cta-call:hover{filter:brightness(1.07)}
+.cta-call .num{font-family:"Libre Baskerville",Georgia,serif;font-size:23px;font-weight:700;line-height:1}
+.cta-call .sub{font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.75;display:block;margin-top:4px}
+
+.creds{margin-top:24px;padding-top:19px;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14.5px;color:var(--onNavy-2)}
+.creds span{display:inline-block}
+.creds.allbold span{font-weight:600;color:var(--onNavy)}
+.creds .tick{margin-right:6px}
+.creds b{color:var(--onNavy);font-weight:600}
+.tick{color:var(--tan);font-weight:700}
+
+/* ---------- sections ---------- */
+section{padding-block:50px}
+.sec-cream{background:var(--cream)}
+.sechead{margin-bottom:26px}
+.sechead .eyebrow{display:block;margin-bottom:9px}
+.sechead p{color:var(--ink-2);margin-top:11px;max-width:62ch}
+.prose p+p{margin-top:15px}
+.prose{max-width:66ch}
+.prose h3{margin-top:28px;margin-bottom:8px}
+.prose ul{margin:12px 0 0;padding-left:20px;color:var(--ink-2)}
+.prose li{margin-bottom:7px}
+
+/* cards */
+.cards{display:grid;gap:16px}
+@media (min-width:760px){.cards{grid-template-columns:1fr 1fr}}
+.card{border-left:3px solid var(--tan);background:var(--paper);padding:20px 22px;border-radius:0 3px 3px 0;box-shadow:0 1px 2px rgba(22,32,43,.05);text-decoration:none;color:inherit;display:block}
+a.card:hover{box-shadow:0 4px 16px rgba(22,32,43,.1)}
+@media (min-width:760px){
+  .cards > .card:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - 8px)}
+}
+.card p{color:var(--ink-2);font-size:15.5px;margin-top:8px}
+.card .more{color:var(--tan);font-weight:600;font-size:14.5px;margin-top:12px;display:block}
+
+/* steps */
+.steps{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+@media (min-width:780px){.steps{grid-template-columns:repeat(3,1fr)}
+  .steps.four{grid-template-columns:repeat(2,1fr)}}
+.step{background:var(--paper);padding:22px 20px}
+.step .n{font-family:"Libre Baskerville",Georgia,serif;font-size:13px;font-weight:700;color:var(--tan);letter-spacing:.1em;display:block;margin-bottom:9px}
+.step p{color:var(--ink-2);font-size:15.5px;margin-top:8px}
+
+/* fee table */
+.fees{border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--paper)}
+.feerow{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:15px 18px;border-bottom:1px solid var(--line-2)}
+.feerow:last-child{border-bottom:none}
+.feerow .what{font-weight:600}
+.feerow .note{display:block;font-size:14px;color:var(--ink-3);font-weight:400;margin-top:2px}
+.feerow .amt{font-family:"Libre Baskerville",Georgia,serif;font-size:21px;font-weight:700;white-space:nowrap}
+.feenote{margin-top:16px;font-size:15px;color:var(--ink-2);max-width:62ch}
+
+/* comparison table */
+.cmp{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line-2);font-size:15.5px}
+thead th{background:var(--navy);color:var(--onNavy);font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-bottom:none}
+tbody tr:last-child td{border-bottom:none}
+td.yes{color:var(--good);font-weight:600;white-space:nowrap}
+td.no{color:var(--ink-3);white-space:nowrap}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+details.q{border-bottom:1px solid var(--line)}
+details.q summary{cursor:pointer;list-style:none;padding:17px 34px 17px 0;position:relative;font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:16.5px;line-height:1.4}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";position:absolute;right:4px;top:15px;font-family:"Source Sans 3",sans-serif;font-size:23px;font-weight:400;color:var(--tan);line-height:1}
+details.q[open] summary::after{content:"\2212"}
+details.q .ans{padding:0 0 19px;color:var(--ink-2);font-size:16px;max-width:66ch}
+details.q .ans p+p{margin-top:11px}
+
+/* forms */
+.formcard{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:24px 22px 22px}
+.formcard.onnavy{border:none;box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.formcard h2{font-size:21px}
+.formcard .fsub{font-size:14.5px;color:var(--ink-2);margin-top:7px}
+.fields{display:grid;gap:13px;margin-top:19px}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.fld input,.fld select,.fld textarea{font:inherit;font-size:16px;padding:11px 12px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:2px;width:100%}
+.fld textarea{resize:vertical;min-height:84px}
+.fld input:focus,.fld select:focus,.fld textarea:focus,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+.row2{display:grid;gap:13px}
+@media (min-width:460px){.row2{grid-template-columns:1fr 1fr}}
+.submit{font:inherit;font-weight:700;font-size:16.5px;width:100%;background:var(--navy);color:var(--onNavy);border:none;border-radius:2px;padding:14px;cursor:pointer;margin-top:4px}
+.submit:hover{background:var(--navy-2)}
+.fine{font-size:12.5px;color:var(--ink-3);margin-top:11px;line-height:1.45}
+.formok{background:var(--tan-soft);border-left:3px solid var(--good);padding:15px 16px;font-size:15px;margin-top:16px;border-radius:0 2px 2px 0}
+
+/* callout */
+.callout{background:var(--tan-soft);border-left:3px solid var(--tan);padding:17px 20px;border-radius:0 3px 3px 0;font-size:15.5px;color:var(--ink-2)}
+.callout b{color:var(--ink)}
+.callout p+p{margin-top:10px}
+
+/* closing */
+.closer{background:var(--navy);color:var(--onNavy);padding-block:48px;text-align:center}
+.closer h2{color:var(--onNavy)}
+.closer p{color:var(--onNavy-2);margin:13px auto 0;max-width:52ch}
+.closer .cta-call{margin-inline:auto}
+
+/* footer */
+footer{background:var(--navy-deep);color:var(--onNavy-2);padding-block:34px;font-size:14.5px}
+.fgrid{display:grid;gap:24px}
+@media (min-width:760px){.fgrid{grid-template-columns:1.25fr 1fr 1fr 1fr}}
+footer a{color:var(--onNavy);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .fh{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);margin-bottom:9px}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin-bottom:5px}
+.firmname{font-family:"Libre Baskerville",Georgia,serif;font-size:17px;color:var(--onNavy);font-weight:700}
+.legal{margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:12.5px;color:#8C95A3;line-height:1.55}
+
+/* sticky mobile call */
+.mobilecall{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--tan);padding:12px 16px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;color:#15202E;font-weight:700;font-size:17px;box-shadow:0 -2px 14px rgba(0,0,0,.18)}
+@media (min-width:860px){.mobilecall{display:none}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* portrait, shown on a light ground beside the biography */
+.biogrid{display:grid;gap:26px;margin-bottom:38px}
+@media (min-width:820px){.biogrid{grid-template-columns:1fr 390px;gap:42px;align-items:start}}
+.portrait{margin:0;max-width:390px;margin-inline:auto;text-align:center}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:50%;box-shadow:0 0 0 1px var(--line),0 6px 18px rgba(22,32,43,.10)}
+.portrait figcaption{margin-top:16px;font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.portrait figcaption b{color:var(--ink);font-weight:700;display:block;font-family:"Libre Baskerville",Georgia,serif;font-size:15px;margin-bottom:3px}
+.portrait figcaption::after{content:"";display:block;width:34px;height:2px;background:var(--tan);margin:12px auto 0}
+.biogrid .prose{max-width:62ch}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--tan);color:#15202E;padding:10px 16px;font-weight:700;border-radius:0 0 3px 0}
+.skip:focus{left:0}
+
+/* SMS consent */
+.fld.consent{margin-top:4px}
+.checkline{display:flex;gap:10px;align-items:flex-start;cursor:pointer;
+  font-size:12.5px;line-height:1.5;color:var(--ink-2);font-weight:400;
+  letter-spacing:0;text-transform:none}
+.checkline input{width:17px;height:17px;flex:0 0 17px;margin-top:2px;accent-color:var(--navy)}
+.checkline a{color:var(--ink);text-decoration:underline}
